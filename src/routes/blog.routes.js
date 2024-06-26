@@ -32,7 +32,7 @@ router.put("/updateBlog/:id", verifyJWT, updateBlog);
 router.delete("/deleteBlog/:id", verifyJWT, deleteBlog);
 
 // Filter Routes
-router.get("/filterByTitle", verifyJWT, filterByTitle);
-router.get("/filterByAuthor", verifyJWT, filterByAuthor);
+router.get("/filterByTitle/:title", verifyJWT, filterByTitle);
+router.get("/filterByAuthor/:author", verifyJWT, filterByAuthor);
 
 export default router;

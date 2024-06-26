@@ -93,11 +93,9 @@ const deleteBlog = asyncHandler(async (req, res) => {
 
 // Filter Blogs by Title
 const filterByTitle = asyncHandler(async (req, res) => {
-  console.log("helll")
-  const title = req.query.title;
-  console.log("title",title);
+  const usertitle = req.params.title;
   const filteredBlogs = await Blog.find({
-    title: title,
+    title: usertitle,
   }).populate("author", "fullName");
   return res
     .status(200)
@@ -106,7 +104,7 @@ const filterByTitle = asyncHandler(async (req, res) => {
 
 // Filter Blogs by Author
 const filterByAuthor = asyncHandler(async (req, res) => {
-  const { author } = req.query;
+  const author = req.params.author;
   const authorUser = await User.findOne({ fullName: author });
   if (!authorUser) {
     throw new ApiError(400, "No such author found");
